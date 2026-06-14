@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main() {
+    int arr[100];
+    int size;
+    int i, j, k;
+
+    printf("Enter size of the array: ");
+    if (scanf("%d", &size) != 1) {
+        return 1;
+    }
+
+    printf("Enter %d elements: ", size);
+    for (i = 0; i < size; i++) {
+        if (scanf("%d", &arr[i]) != 1) {
+            return 1;
+        }
+    }
+
+    for (i = 0; i < size; i++) {
+        for (j = i + 1; j < size; j++) {
+            if (arr[i] == arr[j]) {
+                for (k = j; k < size - 1; k++) {
+                    arr[k] = arr[k + 1];
+                }
+                size--;
+                j--;
+            }
+        }
+    }
+
+    printf("Array after removing duplicates: ");
+    for (i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
